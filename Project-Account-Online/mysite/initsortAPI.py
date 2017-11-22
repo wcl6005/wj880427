@@ -98,6 +98,11 @@ def cn_sort(pyname,bhname,nline):
     
 # 调用排序函数,排序结果保存为文件
 def cnsort():
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+    django.setup()
+    from django.contrib.auth.models import User, Group, Permission
+    from account.models import Material, Order, Company
+
     if os.getcwd() == '/Users/wuchunlong/local/django/wj880427/Project-Account-Online/mysite': #单元测试
         pyname = 'static_common/sortTXT/py.txt'
         bhname = 'static_common/sortTXT/bh.txt'
@@ -105,10 +110,6 @@ def cnsort():
         for item in COMPANY_NAME_LIST:
             print item
         return 'cnsort ok!'        
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
-    django.setup()
-    from django.contrib.auth.models import User, Group, Permission
-    from account.models import Material, Order, Company
     pyname = 'mysite/static_common/sortTXT/py.txt'
     bhname = 'mysite/static_common/sortTXT/bh.txt'
     

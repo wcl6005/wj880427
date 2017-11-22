@@ -22,3 +22,17 @@ class OrderAdmin(admin.ModelAdmin):
 admin.site.register(Material, MaterialAdmin)
 admin.site.register(Company, CompanyAdmin)
 admin.site.register(Order, OrderAdmin)
+
+#############################################################
+from mytest.models import Testusername
+@admin.register(Testusername)
+class TestusernameAdmin(admin.ModelAdmin):
+    list_display = ('id','username', 'password')    
+# from resources.models import Upresources,Commentresources
+# @admin.register(Upresources)
+# class UpresourcesAdmin(admin.ModelAdmin):
+#     list_display = ('id','user', 'title','uploadfile','uploadimg', 'date')
+# 
+# @admin.register(Commentresources)
+# class CommentresourcesAdmin(admin.ModelAdmin):
+#     list_display = ('id','user', 'title','editor','date')

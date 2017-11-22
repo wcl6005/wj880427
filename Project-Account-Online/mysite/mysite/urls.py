@@ -17,12 +17,14 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.views.generic import RedirectView
-
+import account.mytest
 urlpatterns = [
     url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
     url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^(?P<path>assets(/.*))$', RedirectView.as_view(url='/static/%(path)s', query_string=True)),
     url(r'^admin/', admin.site.urls),
-    url(r'^account/', include('account.urls')),
-    url(r'^$', RedirectView.as_view(url='/account/billing/', query_string=True)),
+#     url(r'^account/', include('account.urls')),
+#     url(r'^$', RedirectView.as_view(url='/account/billing/', query_string=True)),
+    url(r'^mytest/', include('account.mytest.urls')),
+
 ]
