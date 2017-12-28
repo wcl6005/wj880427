@@ -1,6 +1,9 @@
 概述：
 1、可以将一个应用的models.py、mytest.py、urls.py放在一起。
 2、templates和static目录，公用。
+3、$ ./start.sh 爆出了Permission denied 没有权限  
+   $ chmod a+x start.sh
+   $ ./start.sh
 一、启动工程
 ./start.sh  运行工程
 ./start.sh -ca  初次运行安装env、创建数据表、创建超级用户、运行工程
