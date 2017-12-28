@@ -1,0 +1,60 @@
+概述：
+1、可以将一个应用的models.py、mytest.py、urls.py放在一起。
+2、templates和static目录，公用。
+一、启动工程
+./start.sh  运行工程
+./start.sh -ca  初次运行安装env、创建数据表、创建超级用户、运行工程
+./start.sh -c   创建数据表，不会破坏数据。、运行工程
+./start.sh -d   删除数据库表，谨慎操作，删除数据不可恢复！！！
+
+
+
+二、定义二级目录结构
+djangopro
+├── blog
+│   ├── migrations
+│   │     └── __init__.py
+│   ├── mytest                     #在这里添加一个应用
+│   │     └── __init__.py
+│   │     └── models.py
+│   │     └── mytest.py
+│   │     └── urls.py
+│   ├── static
+│   │     └── dist
+│   │          └── js
+│   │          └── css
+│   │          └── img
+│   ├── templates
+│   │     └── dist
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── manage.py
+└── djangopro
+    ├── __init__.py
+    ├── __init__.pyc
+    ├── settings.py
+    ├── settings.pyc    
+    ├── urls.py
+    └── wsgi.py
+blog/ urls.py
+from django.conf.urls import url
+import views
+urlpatterns = [
+    url(r'^index/$', views.index, name="index"),
+]
+djangopro/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^test/', include('blog.urls')),#定义第一级路由名test
+]
+ blog/views.py
+#  http://localhost:8000/test/index/
+def index(reuqest):
+    return  HttpResponse('ok')
